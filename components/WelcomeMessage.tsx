@@ -24,7 +24,7 @@ export default function WelcomeMessage() {
             Welcome Message
           </h2>
 
-          <div className="mt-4 h-[2px] w-[450px] bg-[#5b60d6]" />
+          <div className="mt-4 h-[2px] w-[300px] md:w-[450px] bg-[#5b60d6]" />
 
           <div className="mt-6 max-w-[720px] space-y-4 text-[14px] leading-[1.25] text-[#5f5f5f] sm:text-[15px]">
             <p>
