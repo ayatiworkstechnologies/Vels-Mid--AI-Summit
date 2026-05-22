@@ -33,7 +33,7 @@ export default function KeyFocusAreas() {
             Key focus areas include
           </h2>
 
-          <div className="mt-4 h-[1.5px] w-full max-w-[670px] bg-[#4d56c9]" />
+          <div className="mt-4 h-[1.5px] w-full max-w-[570px] bg-[#4d56c9]" />
         </div>
 
         {/* Cards */}

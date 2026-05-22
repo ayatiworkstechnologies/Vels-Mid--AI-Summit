@@ -10,7 +10,7 @@ export default function AboutConference() {
             About the Conference
           </h2>
 
-          <div className="mt-4 h-[1.5px] w-full max-w-[620px] bg-[#4d56c9]" />
+          <div className="mt-4 h-[1.5px] w-full max-w-[520px] bg-[#4d56c9]" />
 
           <div className="mt-7 max-w-[650px] space-y-8 text-[13px] leading-[1.25] text-[#666666] sm:text-[14px]">
             <div className="flex items-start gap-3">
