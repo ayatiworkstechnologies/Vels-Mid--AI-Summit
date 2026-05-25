@@ -2,8 +2,20 @@ import Image from "next/image";
 
 export default function AboutConference() {
   return (
-    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-14">
-      <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 px-5 sm:px-8 md:grid-cols-[1.25fr_0.85fr] md:gap-14 lg:px-10">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+      {/* Section Background Image */}
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Conference Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="absolute inset-0 z-0 object-cover object-center"
+      />
+
+
+      {/* Main Content */}
+      <div className="relative z-10 mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 px-5 sm:px-8 md:grid-cols-[1.25fr_0.85fr] md:gap-14 lg:px-10">
         {/* Left Content */}
         <div className="w-full">
           <h2 className="text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[38px] lg:text-[40px]">
@@ -49,11 +61,12 @@ export default function AboutConference() {
 
         {/* Right Image */}
         <div className="w-full">
-          <div className="relative mx-auto h-[300px] w-full max-w-[390px] overflow-hidden sm:h-[360px] md:h-[395px]">
+          <div className="relative mx-auto h-[300px] w-full max-w-[390px] overflow-hidden rounded-[6px] bg-white shadow-[0_12px_35px_rgba(43,47,145,0.12)] sm:h-[360px] md:h-[395px]">
             <Image
               src="/images/conference.jpg"
               alt="About the Conference"
               fill
+              sizes="(max-width: 768px) 100vw, 390px"
               className="object-cover object-center"
             />
           </div>

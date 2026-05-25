@@ -25,8 +25,18 @@ export default function KeyFocusAreas() {
   ];
 
   return (
-    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-14">
-      <div className="mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+      {/* Full Background Image */}
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Key Focus Areas Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
         {/* Heading */}
         <div className="max-w-[680px]">
           <h2 className="text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[38px] lg:text-[40px]">
@@ -37,7 +47,7 @@ export default function KeyFocusAreas() {
         </div>
 
         {/* Cards */}
-        <div className="mt-20 grid grid-cols-1 overflow-hidden border border-[#e1e1e1] bg-white sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-20 grid grid-cols-1 overflow-hidden border border-[#e1e1e1] bg-white/95 shadow-[0_12px_35px_rgba(43,47,145,0.08)] backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-5">
           {focusAreas.map((item, index) => (
             <div
               key={item.title}
@@ -52,6 +62,7 @@ export default function KeyFocusAreas() {
                   src={item.icon}
                   alt={item.title}
                   fill
+                  sizes="32px"
                   className="object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert"
                 />
               </div>

@@ -2,17 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#" },
-    { name: "Events", href: "/#" },
-    { name: "Contact Us", href: "/#" },
+    { name: "About", href: "/about" },
+    { name: "Events", href: "/events" },
+    { name: "Contact Us", href: "/contact" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.08)]">
@@ -31,19 +41,30 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-[72px] lg:flex">
-          {navLinks.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`text-[15px] font-medium leading-none transition-colors duration-300 ${
-                item.name === "Home"
-                  ? "font-bold text-[#2b2f91]"
-                  : "text-[#111111] hover:text-[#2b2f91]"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`relative text-[15px] font-medium leading-none transition-colors duration-300 ${
+                  active
+                    ? "font-bold text-[#2b2f91]"
+                    : "text-[#111111] hover:text-[#2b2f91]"
+                }`}
+              >
+                {item.name}
+
+                {/* Active Indicator */}
+                <span
+                  className={`absolute -bottom-[10px] left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-[#2b2f91] transition-all duration-300 ${
+                    active ? "w-full opacity-100" : "w-0 opacity-0"
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Mobile + Tablet Menu Button */}
@@ -54,21 +75,18 @@ export default function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
         >
           <span className="relative block h-6 w-6">
-            {/* Top line */}
             <span
               className={`absolute left-1/2 top-[6px] h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-black transition-all duration-300 ${
                 open ? "top-1/2 -translate-y-1/2 rotate-45" : ""
               }`}
             />
 
-            {/* Middle line */}
             <span
               className={`absolute left-1/2 top-1/2 h-[2.5px] w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black transition-all duration-300 ${
                 open ? "opacity-0" : ""
               }`}
             />
 
-            {/* Bottom line */}
             <span
               className={`absolute left-1/2 bottom-[6px] h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-black transition-all duration-300 ${
                 open ? "bottom-auto top-1/2 -translate-y-1/2 -rotate-45" : ""
@@ -85,20 +103,30 @@ export default function Header() {
         }`}
       >
         <nav className="flex flex-col px-5 py-3">
-          {navLinks.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`border-b border-gray-100 py-4 text-[15px] font-medium ${
-                item.name === "Home"
-                  ? "font-bold text-[#2b2f91]"
-                  : "text-black"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={`relative border-b border-gray-100 py-4 text-[15px] font-medium transition-colors duration-300 ${
+                  active
+                    ? "font-bold text-[#2b2f91]"
+                    : "text-black hover:text-[#2b2f91]"
+                }`}
+              >
+                <span className="flex items-center justify-between">
+                  {item.name}
+
+                  {active && (
+                    <span className="h-[7px] w-[7px] rounded-full bg-[#2b2f91]" />
+                  )}
+                </span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </header>

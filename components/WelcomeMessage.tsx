@@ -3,8 +3,19 @@ import Link from "next/link";
 
 export default function WelcomeMessage() {
   return (
-    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-14">
-      <div className="mx-auto grid max-w-[1220px] grid-cols-1 items-center gap-8 px-5 sm:px-8 md:grid-cols-[0.9fr_1.35fr] md:gap-12 lg:px-10">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+      {/* Full Background Image */}
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Conference Highlights Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto grid max-w-[1220px] grid-cols-1 items-center gap-8 px-5 sm:px-8 md:grid-cols-[0.9fr_1.35fr] md:gap-12 lg:px-10">
         {/* Left Image */}
         <div className="w-full">
           <div className="relative h-[260px] w-full overflow-hidden sm:h-[340px] md:h-[355px]">
@@ -13,6 +24,7 @@ export default function WelcomeMessage() {
               alt="MED-AI Summit 2026"
               fill
               priority
+              sizes="(max-width: 768px) 100vw, 480px"
               className="object-cover object-center"
             />
           </div>
@@ -24,7 +36,7 @@ export default function WelcomeMessage() {
             Welcome Message
           </h2>
 
-          <div className="mt-4 h-[2px] w-[300px] md:w-[450px] bg-[#5b60d6]" />
+          <div className="mt-4 h-[2px] w-[300px] bg-[#5b60d6] md:w-[450px]" />
 
           <div className="mt-6 max-w-[720px] space-y-4 text-[14px] leading-[1.25] text-[#5f5f5f] sm:text-[15px]">
             <p>

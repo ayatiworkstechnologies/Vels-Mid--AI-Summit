@@ -1,35 +1,101 @@
+import Image from "next/image";
+
 export default function RunningText() {
-  const items = [
-    "7 Pre-conference hands-on workshops",
-    "9 Scientific sessions",
-    "Velan Oration Lecture",
-    "Scientific paper presentation",
+  const highlights = [
+    {
+      title: "7 Pre-conference hands-on workshops",
+      icon: "/icons/highlight-1.svg",
+    },
+    {
+      title: "9 Scientific sessions",
+      icon: "/icons/highlight-2.svg",
+    },
+    {
+      title: "Velan Oration Lecture",
+      icon: "/icons/highlight-3.svg",
+    },
+    {
+      title: "Scientific paper presentations",
+      icon: "/icons/highlight-4.svg",
+    },
+    {
+      title: "Poster presentations",
+      icon: "/icons/highlight-5.svg",
+    },
+    {
+      title: "Panel discussions",
+      icon: "/icons/highlight-6.svg",
+    },
+    {
+      title: "Networking opportunities",
+      icon: "/icons/highlight-7.svg",
+    },
+    {
+      title: "Banquet dinner for delegates",
+      icon: "/icons/highlight-8.svg",
+    },
   ];
 
   return (
-    <section className="w-full overflow-hidden bg-white py-4">
-      <div className="relative flex overflow-hidden whitespace-nowrap">
-        <div className="flex animate-marquee items-center gap-14 pr-14">
-          {[...items, ...items].map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-3 text-[15px] font-bold text-[#2b2f91] md:text-[16px]"
-            >
-              <span className="h-[5px] w-[5px] bg-[#2b2f91]" />
-              <span>{item}</span>
-            </div>
-          ))}
+    <section className="relative w-full overflow-hidden py-10 sm:py-12 md:py-14 lg:py-16">
+      {/* Full Background Image */}
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Conference Highlights Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
+        {/* Heading */}
+        <div className="max-w-[920px]">
+          <span className="text-[12px] font-bold uppercase tracking-[0.32em] text-[#2b2f91]">
+            Conference Highlights
+          </span>
+
+          <h2 className="mt-3 text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[40px]">
+            What to Expect at MED-AI Summit 2026
+          </h2>
+
+          <div className="mt-4 h-[1.5px] w-full max-w-[950px] bg-[#4d56c9]" />
         </div>
 
-        <div className="flex animate-marquee items-center gap-14 pr-14">
-          {[...items, ...items].map((item, index) => (
-            <div
-              key={`second-${index}`}
-              className="flex items-center gap-3 text-[15px] font-bold text-[#2b2f91] md:text-[16px]"
+        {/* Cards */}
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {highlights.map((item, index) => (
+            <article
+              key={index}
+              className="group relative min-h-[150px] overflow-hidden rounded-[16px] border border-[#2b2f91] bg-white/95 p-5 shadow-[0_8px_24px_rgba(43,47,145,0.10)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:bg-[#2b2f91] hover:shadow-[0_18px_40px_rgba(43,47,145,0.22)]"
             >
-              <span className="h-[5px] w-[5px] bg-[#2b2f91]" />
-              <span>{item}</span>
-            </div>
+              {/* Hover Flow Indicator */}
+              <div className="absolute left-0 top-0 h-full w-0 bg-[#2b2f91] transition-all duration-500 ease-out group-hover:w-full" />
+
+              {/* Content */}
+              <div className="relative z-10 flex h-full flex-col justify-between">
+                <div className="flex items-start justify-between">
+                  {/* Icon */}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f1f2ff] transition-all duration-500 group-hover:bg-white">
+                    <div className="relative h-6 w-6">
+                      <Image
+                        src={item.icon}
+                        alt={item.title}
+                        fill
+                        sizes="24px"
+                        className="object-contain transition-all duration-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Dot */}
+                  <span className="mt-2 h-2 w-2 rounded-full bg-[#2b2f91]/40 transition-all duration-500 group-hover:bg-white/80" />
+                </div>
+
+                <h3 className="mt-8 text-[16px] font-extrabold leading-[1.35] text-[#2b2f91] transition-colors duration-500 group-hover:text-white sm:text-[17px]">
+                  {item.title}
+                </h3>
+              </div>
+            </article>
           ))}
         </div>
       </div>

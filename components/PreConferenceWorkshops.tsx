@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function PreConferenceWorkshops() {
@@ -33,8 +34,18 @@ export default function PreConferenceWorkshops() {
   ];
 
   return (
-    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-14">
-      <div className="mx-auto max-w-[900px] px-5 sm:px-8">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+      {/* Full Background Image */}
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Pre Conference Workshops Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-[900px] px-5 sm:px-8">
         {/* Heading */}
         <div className="mx-auto max-w-[820px]">
           <h2 className="text-[28px] font-extrabold leading-tight text-black sm:text-[28px] md:text-[35px]">
@@ -45,7 +56,7 @@ export default function PreConferenceWorkshops() {
         </div>
 
         {/* Table */}
-        <div className="mx-auto mt-8 max-w-[540px] overflow-x-auto">
+        <div className="mx-auto mt-8 max-w-[540px] overflow-x-auto rounded-[8px] bg-white/95 shadow-[0_12px_35px_rgba(43,47,145,0.10)] backdrop-blur-sm">
           <table className="w-full border-collapse text-left">
             <thead>
               <tr className="bg-[#2b2f91] text-white">
@@ -62,7 +73,7 @@ export default function PreConferenceWorkshops() {
               {workshops.map((item) => (
                 <tr
                   key={item.category}
-                  className="border-b border-[#d8d8d8]"
+                  className="border-b border-[#d8d8d8] last:border-b-0"
                 >
                   <td className="px-3 py-[9px] text-[13px] font-bold leading-tight text-[#555555] sm:text-[14px]">
                     {item.category}
@@ -80,7 +91,7 @@ export default function PreConferenceWorkshops() {
         <div className="mt-8 flex justify-center">
           <Link
             href="#"
-            className="inline-flex min-w-[190px] items-center justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376]"
+            className="inline-flex min-w-[190px] items-center justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.24)]"
           >
             Register
           </Link>

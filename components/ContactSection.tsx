@@ -1,7 +1,20 @@
+import Image from "next/image";
+
 export default function ContactSection() {
   return (
-    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-10">
-      <div className="mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-10">
+      {/* Full Background Image */}
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Contact Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
         {/* Heading */}
         <div className="max-w-[520px]">
           <h2 className="text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[38px] lg:text-[40px]">
@@ -14,7 +27,7 @@ export default function ContactSection() {
         {/* Content */}
         <div className="mt-10 grid grid-cols-1 items-center gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16 lg:gap-24">
           {/* Contact Card */}
-          <div className="w-full max-w-[390px] rounded-[8px] bg-white px-5 py-5 shadow-[0_8px_26px_rgba(0,0,0,0.10)] sm:px-6 sm:py-6">
+          <div className="w-full max-w-[390px] rounded-[12px] bg-white/95 px-5 py-5 shadow-[0_12px_35px_rgba(43,47,145,0.12)] backdrop-blur-sm sm:px-6 sm:py-6">
             <h3 className="text-[16px] font-extrabold text-black">
               Conference Secretary
             </h3>
@@ -111,7 +124,7 @@ export default function ContactSection() {
 
           {/* Map */}
           <div className="w-full">
-            <div className="h-[260px] w-full overflow-hidden rounded-[2px] sm:h-[300px] md:h-[315px] rounded-xl">
+            <div className="h-[260px] w-full overflow-hidden rounded-xl bg-white shadow-[0_12px_35px_rgba(43,47,145,0.12)] sm:h-[300px] md:h-[315px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d15548.831473988832!2d80.2422784!3d13.0224308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3a527f10f13d746f%3A0x3aeb473a9cfb1d55!2sVels%20Medical%20College%20and%20Hospital%2C%20Manjankaranai%2C%20Bandikavanoor%2C%20Manjankaranai%2C%20Tamil%20Nadu%20601102!3m2!1d13.2689063!2d80.1225027!5e0!3m2!1sen!2sin!4v1779451373099!5m2!1sen!2sin"
                 width="100%"

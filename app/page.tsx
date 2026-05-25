@@ -1,6 +1,7 @@
 import AboutConference from "@/components/AboutConference";
 import AboutVels from "@/components/AboutVels";
 import ContactSection from "@/components/ContactSection";
+import EarlyBirdRegistration from "@/components/EarlyBirdRegistration";
 import GlimpseCarousel from "@/components/GlimpseCarousel";
 import KeyFocusAreas from "@/components/KeyFocusAreas";
 import PreConferenceWorkshops from "@/components/PreConferenceWorkshops";
@@ -30,6 +31,8 @@ export default function Home() {
        <WelcomeMessage />
        {/* {About Section} */}
        <AboutVels />
+       {/* {Early Bird Registration Section} */}
+       <EarlyBirdRegistration />
        {/* {glimpse carousel section} */}
        <GlimpseCarousel />
        {/* {About The Conference section} */}

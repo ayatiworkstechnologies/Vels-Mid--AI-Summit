@@ -51,7 +51,16 @@ export default function GlimpseCarousel() {
   }, [isPaused]);
 
   return (
-    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+    <section className="w-full relative bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+      {/* Full Background Image */}
+            <Image
+              src="/images/highlights-bg.jpg"
+              alt="Conference Highlights Background"
+              fill
+              priority={false}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
       <div
         className="relative mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10"
         onMouseEnter={() => setIsPaused(true)}
