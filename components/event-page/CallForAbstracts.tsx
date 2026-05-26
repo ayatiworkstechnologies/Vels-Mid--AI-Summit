@@ -253,7 +253,7 @@ export default function CallForAbstracts() {
 
                     <a
                         href="/contact"
-                        className="mt-5 inline-flex rounded-[6px] bg-white px-6 py-3 text-[13px] font-extrabold text-[#2b2f91] transition-all duration-300 hover:-translate-y-1 hover:bg-[#f2f3ff] md:mt-0"
+                        className="mt-5 inline-flex rounded-[12px] bg-white px-6 py-3 text-[13px] font-extrabold text-[#2b2f91] transition-all duration-300 hover:-translate-y-1 hover:bg-[#f2f3ff] md:mt-0"
                     >
                         Contact Us
                     </a>

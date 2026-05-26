@@ -25,7 +25,7 @@ export default function KeyFocusAreas() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14 ">
       {/* Full Background Image */}
       <Image
         src="/images/highlights-bg.jpg"
@@ -47,7 +47,7 @@ export default function KeyFocusAreas() {
         </div>
 
         {/* Cards */}
-        <div className="mt-20 grid grid-cols-1 overflow-hidden border border-[#e1e1e1] bg-white/95 shadow-[0_12px_35px_rgba(43,47,145,0.08)] backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-20 grid grid-cols-1 rounded-[12px] overflow-hidden border border-[#e1e1e1] bg-white/95 shadow-[0_12px_35px_rgba(43,47,145,0.08)] backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-5">
           {focusAreas.map((item, index) => (
             <div
               key={item.title}

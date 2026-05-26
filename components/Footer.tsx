@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function Footer() {
   const footerLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#" },
-    { name: "Events", href: "#" },
-    { name: "Locations", href: "#" },
+    { name: "About", href: "/about" },
+    { name: "Events", href: "/events" },
+    { name: "Locations", href: "/contact" },
   ];
 
   return (

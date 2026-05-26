@@ -205,7 +205,7 @@ export default function OrganizingCommittee() {
                   }}
                   type="button"
                   onClick={() => changeTab(index)}
-                  className={`relative shrink-0 cursor-pointer px-5 py-2 text-[13px] font-bold transition-all duration-300 sm:text-[14px] ${
+                  className={`relative shrink-0 rounded-[12px] cursor-pointer px-5 py-2 text-[13px] font-bold transition-all duration-300 sm:text-[14px] ${
                     active
                       ? "bg-[#2b2f91] text-white "
                       : "bg-transparent text-[#2b2f91] hover:bg-[#eef0ff]"

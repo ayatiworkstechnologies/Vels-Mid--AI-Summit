@@ -18,7 +18,7 @@ export default function WelcomeMessage() {
       <div className="relative z-10 mx-auto grid max-w-[1220px] grid-cols-1 items-center gap-8 px-5 sm:px-8 md:grid-cols-[0.9fr_1.35fr] md:gap-12 lg:px-10">
         {/* Left Image */}
         <div className="w-full">
-          <div className="relative h-[260px] w-full overflow-hidden sm:h-[340px] md:h-[355px]">
+          <div className="relative h-[260px] w-full rounded-[12px] overflow-hidden sm:h-[340px] md:h-[455px]">
             <Image
               src="/images/welcome.jpg"
               alt="MED-AI Summit 2026"
@@ -77,7 +77,7 @@ export default function WelcomeMessage() {
           <div className="mt-8">
             <Link
               href="/register"
-              className="inline-flex min-w-[185px] items-center justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376]"
+              className="inline-flex min-w-[185px] items-center rounded-[12px] justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376]"
             >
               Register
             </Link>

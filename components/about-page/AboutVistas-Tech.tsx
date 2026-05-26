@@ -174,7 +174,7 @@ export default function AboutVistas() {
                 <button
                   type="button"
                   onClick={() => setShowMore(!showMore)}
-                  className="inline-flex items-center justify-center rounded-[5px] bg-[#2b2f91] px-6 py-2.5 text-[13px] font-extrabold text-white transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.22)]"
+                  className="inline-flex items-center justify-center rounded-[12px] bg-[#2b2f91] px-6 py-2.5 text-[13px] font-extrabold text-white transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.22)]"
                 >
                   {showMore ? "Read Less" : "Read More"}
                 </button>

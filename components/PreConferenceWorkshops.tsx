@@ -91,7 +91,7 @@ export default function PreConferenceWorkshops() {
         <div className="mt-8 flex justify-center">
           <Link
             href="#"
-            className="inline-flex min-w-[190px] items-center justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.24)]"
+            className="inline-flex min-w-[190px] rounded-[12px] items-center justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.24)]"
           >
             Register
           </Link>
