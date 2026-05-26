@@ -1,5 +1,7 @@
+import AboutVistas from "@/components/about-page/AboutVistas-Tech";
+import AboutVmch from "@/components/about-page/AboutVmch";
+import OrganizingCommittee from "@/components/about-page/OrganizingCommittee";
 import AboutConference from "@/components/AboutConference";
-import SpeakersCarousel from "@/components/SpeakersCarousel";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,9 +20,13 @@ export default function AboutPage() {
      </section>
      {/* {About The Conference} */}
        <AboutConference />
+       {/* {About Vistas Tech} */}
+       <AboutVistas />
+       {/* {About Vels Medical College and Hospital} */}
+       <AboutVmch />
+       {/* {Organizing Committee} */}
+       <OrganizingCommittee />
 
-    {/* {Speakers carousel} */}
-       <SpeakersCarousel />
 
     </main>
   );
