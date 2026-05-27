@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 
 import RegistrationPayment from "@/components/contact-page/RegistrationPayment";
 import BankDetails from "@/components/contact-page/BankDetails";
@@ -19,6 +22,7 @@ function BackgroundSection({ children }: { children: ReactNode }) {
         sizes="100vw"
         className="object-cover object-center"
       />
+
       <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
         {children}
       </div>
@@ -27,8 +31,28 @@ function BackgroundSection({ children }: { children: ReactNode }) {
 }
 
 export default function ContactPage() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 350);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <main className="min-h-screen bg-white">
+    <main className="relative min-h-screen bg-white">
       {/* Contact Banner */}
       <section className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]">
         <Image
@@ -40,22 +64,6 @@ export default function ContactPage() {
           className="object-cover object-center"
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/25" />
-
-        {/* Banner Content */}
-        <div className="relative z-10 flex h-full items-center justify-center px-5 text-center">
-          <div>
-            <h1 className="text-[38px] font-extrabold leading-tight text-white sm:text-[52px] md:text-[64px]">
-              Contact Us
-            </h1>
-
-            <p className="mx-auto mt-4 max-w-[680px] text-[15px] font-medium leading-[1.7] text-white/90 sm:text-[17px]">
-              Registration, payment, sponsorship, venue, and conference support
-              information for MED-AI Summit 2026.
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* Page Intro */}
@@ -100,6 +108,20 @@ export default function ContactPage() {
       <BackgroundSection>
         <VenueLocation />
       </BackgroundSection>
+
+      {/* Scroll To Top Button */}
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+        className={`fixed bottom-6 right-5 z-[999] flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-[#2b2f91] text-white shadow-[0_12px_30px_rgba(43,47,145,0.35)] transition-all duration-500 hover:-translate-y-1 hover:bg-[#1f2376] hover:shadow-[0_16px_36px_rgba(43,47,145,0.45)] sm:bottom-8 sm:right-7 ${
+          showScrollTop
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-5 opacity-0"
+        }`}
+      >
+        <span className="text-[26px] font-light leading-none">↑</span>
+      </button>
     </main>
   );
 }

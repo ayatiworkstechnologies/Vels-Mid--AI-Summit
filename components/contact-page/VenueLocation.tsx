@@ -22,7 +22,7 @@ export default function VenueLocation() {
 
         {/* Map QR */}
         <div className="mt-6 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-          <div className="flex h-[180px] w-[180px] items-center justify-center rounded-[18px] border border-[#dfe2f4] bg-white p-4 shadow-[0_10px_30px_rgba(43,47,145,0.10)]">
+          <div className="mx-auto flex h-[180px] w-[180px] items-center justify-center rounded-[18px] border border-[#dfe2f4] bg-white p-4 shadow-[0_10px_30px_rgba(43,47,145,0.10)] sm:mx-0">
             <Image
               src="/images/qr/location-qr.png"
               alt="Google Maps Location QR Code"

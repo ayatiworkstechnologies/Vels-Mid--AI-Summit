@@ -29,8 +29,15 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="mt-3 text-center text-[12px] font-normal text-[#3d46a0] sm:text-[13px]">
-          Copyright ©2026 Vels - All right reserved | Designed &amp; Developed
-          by Ayatiworks
+          Copyright ©2026 Vels - All right reserved | Designed &amp; Developed by{" "}
+          <a
+            href="https://www.ayatiworks.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#2b2f91] transition-colors duration-300 hover:text-[#ff7a00]"
+          >
+            Ayatiworks
+          </a>
         </p>
       </div>
     </footer>
