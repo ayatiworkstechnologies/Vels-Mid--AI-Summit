@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ScientificProgram() {
   const [activeDay, setActiveDay] = useState<"day1" | "day2">("day1");
@@ -101,7 +102,7 @@ export default function ScientificProgram() {
 
   return (
     <section className="relative w-full overflow-visible bg-white py-8 sm:py-10 md:py-12 lg:py-14">
-      {/* Background Image - separated so sticky works */}
+      {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src="/images/highlights-bg.jpg"
@@ -111,26 +112,45 @@ export default function ScientificProgram() {
           sizes="100vw"
           className="object-cover object-center"
         />
-  
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
         {/* Heading */}
-        <div className="max-w-[760px]">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.65 }}
+          className="max-w-[760px]"
+        >
           <h2 className="text-[28px] font-extrabold leading-tight text-black sm:text-[34px] md:text-[38px]">
             Scientific Program & Keynote Speakers
           </h2>
 
-          <div className="mt-4 h-[1.5px] w-full max-w-[620px] bg-[#4d56c9]" />
-        </div>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85, delay: 0.18 }}
+            style={{ transformOrigin: "left" }}
+            className="mt-4 h-[1.5px] w-full max-w-[620px] bg-[#4d56c9]"
+          />
+        </motion.div>
 
         {/* Mobile + Tablet Design */}
         <div className="mt-8 block lg:hidden">
           {/* Day Selector */}
-          <div className="rounded-[22px] bg-white/95 p-4 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+            className="rounded-[22px] bg-white/95 p-4 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm"
+          >
             <div className="grid grid-cols-2 gap-3">
-              <button
+              <motion.button
                 type="button"
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setActiveDay("day1")}
                 className={`rounded-[16px] px-4 py-4 text-left transition-all duration-300 ${
                   activeDay === "day1"
@@ -147,10 +167,11 @@ export default function ScientificProgram() {
                 <span className="mt-1 block text-[12px] font-bold opacity-80">
                   Friday
                 </span>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
                 type="button"
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setActiveDay("day2")}
                 className={`rounded-[16px] px-4 py-4 text-left transition-all duration-300 ${
                   activeDay === "day2"
@@ -167,12 +188,18 @@ export default function ScientificProgram() {
                 <span className="mt-1 block text-[12px] font-bold opacity-80">
                   Saturday
                 </span>
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Mobile / Tablet Schedule */}
-          <div className="mt-5 rounded-[22px] bg-white/95 p-4 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm sm:p-5">
+          {/* Mobile/Tablet Schedule */}
+          <motion.div
+            key={activeDay}
+            initial={{ opacity: 0, y: 35 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="mt-5 rounded-[22px] bg-white/95 p-4 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm sm:p-5"
+          >
             <div className="flex items-center justify-between gap-4 border-b border-[#4d56c9] pb-4">
               <h3 className="text-[22px] font-extrabold leading-tight text-black sm:text-[26px]">
                 {activeDay === "day1"
@@ -187,9 +214,12 @@ export default function ScientificProgram() {
 
             <div className="mt-5 grid gap-3">
               {sessions.map((item, index) => (
-                <article
-                  key={`${item.time}-${index}`}
-                  className="rounded-[16px] border border-[#e3e5f5] bg-white p-4 shadow-[0_8px_22px_rgba(43,47,145,0.08)]"
+                <motion.article
+                  key={`${activeDay}-${item.time}-${index}`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -25 : 25 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.06 }}
+                  className="rounded-[16px] border border-[#e3e5f5] bg-white p-4 shadow-[0_8px_22px_rgba(43,47,145,0.08)] transition-all duration-300 hover:border-[#2b2f91] hover:shadow-[0_12px_28px_rgba(43,47,145,0.14)]"
                 >
                   <div className="flex items-start gap-3">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2b2f91] text-[12px] font-extrabold text-white">
@@ -206,16 +236,22 @@ export default function ScientificProgram() {
                       </p>
                     </div>
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Desktop Design */}
         <div className="mt-8 hidden grid-cols-[0.85fr_1.65fr] items-start gap-8 overflow-visible lg:grid">
-          {/* Sticky Calendar Card */}
-          <div className="sticky top-[110px] self-start rounded-[22px] bg-white/95 p-6 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm">
+          {/* Calendar Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -45, rotate: -1.5 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, delay: 0.18 }}
+            className="sticky top-[110px] self-start rounded-[22px] bg-white/95 p-6 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm"
+          >
             {/* Calendar Header */}
             <div className="flex items-center justify-between">
               <button
@@ -230,7 +266,6 @@ export default function ScientificProgram() {
                 <span className="rounded-[8px] bg-white px-4 py-3 text-[22px] font-extrabold text-black shadow-[0_6px_18px_rgba(0,0,0,0.04)]">
                   June
                 </span>
-
                 <span className="rounded-[8px] bg-white px-4 py-3 text-[22px] font-extrabold text-black shadow-[0_6px_18px_rgba(0,0,0,0.04)]">
                   2026
                 </span>
@@ -265,10 +300,12 @@ export default function ScientificProgram() {
                       (activeDay === "day2" && isDay2);
 
                     return (
-                      <button
+                      <motion.button
                         key={`${weekIndex}-${index}`}
                         type="button"
                         disabled={!isClickable}
+                        whileHover={isClickable ? { scale: 1.08 } : {}}
+                        whileTap={isClickable ? { scale: 0.94 } : {}}
                         onClick={() => {
                           if (isDay1) setActiveDay("day1");
                           if (isDay2) setActiveDay("day2");
@@ -282,7 +319,7 @@ export default function ScientificProgram() {
                         }`}
                       >
                         {date}
-                      </button>
+                      </motion.button>
                     );
                   })}
                 </div>
@@ -295,10 +332,16 @@ export default function ScientificProgram() {
               <span className="font-extrabold text-[#2b2f91]">27</span> for Day
               2 schedule.
             </p>
-          </div>
+          </motion.div>
 
           {/* Schedule Card */}
-          <div className="rounded-[22px] bg-white/95 p-6 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm">
+          <motion.div
+            key={activeDay}
+            initial={{ opacity: 0, x: 45 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55 }}
+            className="rounded-[22px] bg-white/95 p-6 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm"
+          >
             <div className="flex items-center justify-between gap-4 border-b border-[#4d56c9] pb-4">
               <h3 className="text-[28px] font-extrabold leading-tight text-black">
                 {activeDay === "day1"
@@ -318,7 +361,6 @@ export default function ScientificProgram() {
                     <th className="w-[260px] px-6 py-5 text-[16px] font-extrabold">
                       Time
                     </th>
-
                     <th className="px-6 py-5 text-[16px] font-extrabold">
                       Session
                     </th>
@@ -327,8 +369,11 @@ export default function ScientificProgram() {
 
                 <tbody>
                   {sessions.map((item, index) => (
-                    <tr
-                      key={`${item.time}-${index}`}
+                    <motion.tr
+                      key={`${activeDay}-${item.time}-${index}`}
+                      initial={{ opacity: 0, y: 22 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.38, delay: index * 0.05 }}
                       className={`border-b border-[#d9ddf4] last:border-b-0 ${
                         index % 2 === 0 ? "bg-white" : "bg-[#f2f2f5]"
                       }`}
@@ -340,12 +385,12 @@ export default function ScientificProgram() {
                       <td className="px-6 py-5 align-top text-[14px] font-bold leading-[1.5] text-[#4f4f4f]">
                         {item.session}
                       </td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

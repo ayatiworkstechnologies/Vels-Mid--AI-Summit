@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -38,7 +38,12 @@ export default function Home() {
   return (
     <main className="relative">
       {/* Banner Section */}
-      <section className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]">
+      <motion.section
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9 }}
+        className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
+      >
         <Image
           src="/images/banner.jpg"
           alt="VELS Banner"
@@ -47,7 +52,7 @@ export default function Home() {
           sizes="100vw"
           className="object-cover object-center"
         />
-      </section>
+      </motion.section>
 
       {/* Running Text Section */}
       <RunningText />
@@ -71,7 +76,7 @@ export default function Home() {
       <KeyFocusAreas />
 
       {/* Pre-Conference Workshops Section */}
-      <PreConferenceWorkshops />
+      {/* <PreConferenceWorkshops /> */}
 
       {/* Speaker Carousel Section */}
       <SpeakersCarousel />
@@ -84,11 +89,10 @@ export default function Home() {
         type="button"
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className={`fixed bottom-6 right-5 z-[999] flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-[#2b2f91] text-white shadow-[0_12px_30px_rgba(43,47,145,0.35)] transition-all duration-500 hover:-translate-y-1 hover:bg-[#1f2376] hover:shadow-[0_16px_36px_rgba(43,47,145,0.45)] sm:bottom-8 sm:right-7 ${
-          showScrollTop
+        className={`fixed bottom-6 right-5 z-[999] flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-[#2b2f91] text-white shadow-[0_12px_30px_rgba(43,47,145,0.35)] transition-all duration-500 hover:-translate-y-1 hover:bg-[#1f2376] hover:shadow-[0_16px_36px_rgba(43,47,145,0.45)] sm:bottom-8 sm:right-7 ${showScrollTop
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-5 opacity-0"
-        }`}
+          }`}
       >
         <span className="text-[26px] font-light leading-none">↑</span>
       </button>

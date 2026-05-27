@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function RegistrationDetails() {
   const registrationRows = [
@@ -29,11 +32,11 @@ export default function RegistrationDetails() {
   const importantDates = [
     {
       category: "Early Bird Registration",
-      workshop: "15 May 2026",
+      workshop: "30 May 2026",
     },
     {
       category: "Workshop Registration Deadline",
-      workshop: "15 May 2026",
+      workshop: "30 May 2026",
     },
     {
       category: "Abstract Submission Deadline",
@@ -67,16 +70,35 @@ export default function RegistrationDetails() {
 
       <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-8 lg:px-10">
         {/* Registration Heading */}
-        <div className="mx-auto max-w-[760px] text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.65 }}
+          className="mx-auto max-w-[760px] text-center"
+        >
           <h2 className="text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[40px]">
             Registration Details
           </h2>
 
-          <div className="mx-auto mt-4 h-[1.5px] w-full max-w-[470px] bg-[#4d56c9]" />
-        </div>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 0.18 }}
+            style={{ transformOrigin: "center" }}
+            className="mx-auto mt-4 h-[1.5px] w-full max-w-[470px] bg-[#4d56c9]"
+          />
+        </motion.div>
 
         {/* Registration Table */}
-        <div className="mx-auto mt-8 max-w-[980px] overflow-hidden rounded-[18px] border border-[#d9ddf4] bg-white/95 shadow-[0_16px_42px_rgba(43,47,145,0.10)] backdrop-blur-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.75, delay: 0.12 }}
+          className="mx-auto mt-8 max-w-[980px] overflow-hidden rounded-[18px] border border-[#d9ddf4] bg-white/95 shadow-[0_16px_42px_rgba(43,47,145,0.10)] backdrop-blur-sm"
+        >
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] border-collapse text-left">
               <thead>
@@ -107,12 +129,15 @@ export default function RegistrationDetails() {
                   <th className="border-r border-white/20 px-5 py-4 text-center text-[14px] font-extrabold sm:text-[15px]">
                     Early Bird
                   </th>
+
                   <th className="border-r border-white/20 px-5 py-4 text-center text-[14px] font-extrabold sm:text-[15px]">
                     Regular
                   </th>
+
                   <th className="border-r border-white/20 px-5 py-4 text-center text-[14px] font-extrabold sm:text-[15px]">
                     Early Bird
                   </th>
+
                   <th className="px-5 py-4 text-center text-[14px] font-extrabold sm:text-[15px]">
                     Regular
                   </th>
@@ -151,10 +176,16 @@ export default function RegistrationDetails() {
               </tbody>
             </table>
           </div>
-        </div>
+        </motion.div>
 
         {/* Register CTA */}
-        <div className="mx-auto mt-12 max-w-[980px] rounded-[18px] bg-[#2b2f91] px-5 py-5 shadow-[0_16px_42px_rgba(43,47,145,0.18)] sm:px-8 md:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 42 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.65, delay: 0.12 }}
+          className="mx-auto mt-12 max-w-[980px] rounded-[18px] bg-[#2b2f91] px-5 py-5 shadow-[0_16px_42px_rgba(43,47,145,0.18)] sm:px-8 md:px-10"
+        >
           <div className="flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
             <h3 className="text-[20px] font-extrabold leading-tight text-white sm:text-[24px]">
               Click here to Register for MED-AI Summit 2026
@@ -168,19 +199,38 @@ export default function RegistrationDetails() {
               Register
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Important Dates Heading */}
-        <div className="mx-auto mt-10 max-w-[760px] text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.65 }}
+          className="mx-auto mt-10 max-w-[760px] text-center"
+        >
           <h2 className="text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[40px]">
             Important Dates
           </h2>
 
-          <div className="mx-auto mt-4 h-[1.5px] w-full max-w-[470px] bg-[#4d56c9]" />
-        </div>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 0.18 }}
+            style={{ transformOrigin: "center" }}
+            className="mx-auto mt-4 h-[1.5px] w-full max-w-[470px] bg-[#4d56c9]"
+          />
+        </motion.div>
 
         {/* Important Dates Table */}
-        <div className="mx-auto mt-7 max-w-[620px] overflow-hidden rounded-[18px] border border-[#d9ddf4] bg-white/95 shadow-[0_16px_42px_rgba(43,47,145,0.10)] backdrop-blur-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.75, delay: 0.12 }}
+          className="mx-auto mt-7 max-w-[620px] overflow-hidden rounded-[18px] border border-[#d9ddf4] bg-white/95 shadow-[0_16px_42px_rgba(43,47,145,0.10)] backdrop-blur-sm"
+        >
           <table className="w-full table-fixed border-collapse text-left">
             <thead>
               <tr className="bg-[#2b2f91] text-white">
@@ -213,7 +263,7 @@ export default function RegistrationDetails() {
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -31,8 +32,13 @@ export default function AboutPage() {
 
   return (
     <main className="relative">
-      {/* About Banner */}
-      <section className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[580px]">
+     {/* Banner Section */}
+      <motion.section
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9 }}
+        className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
+      >
         <Image
           src="/images/banner-about.jpg"
           alt="VELS About Banner"
@@ -41,7 +47,7 @@ export default function AboutPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-      </section>
+      </motion.section>
 
       {/* About The Conference */}
       <AboutConference />

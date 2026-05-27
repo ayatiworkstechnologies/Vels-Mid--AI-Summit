@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function SpeakersCarousel() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
-
-  // ✅ Only one card can be open
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const speakers = [
@@ -178,17 +177,28 @@ export default function SpeakersCarousel() {
         className="object-cover object-center"
       />
 
-     
-
       <div className="relative z-10 mx-auto max-w-[1180px] overflow-hidden px-5 sm:px-8 lg:px-10">
         {/* Heading */}
-        <div className="max-w-[680px]">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.65 }}
+          className="max-w-[680px]"
+        >
           <h2 className="text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[38px] lg:text-[40px]">
             Speakers
           </h2>
 
-          <div className="mt-4 h-[1.5px] w-full max-w-[250px] bg-[#4d56c9]" />
-        </div>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 0.15 }}
+            style={{ transformOrigin: "left" }}
+            className="mt-4 h-[1.5px] w-full max-w-[250px] bg-[#4d56c9]"
+          />
+        </motion.div>
 
         {/* Carousel */}
         <div
@@ -196,8 +206,12 @@ export default function SpeakersCarousel() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div
+          <motion.div
             ref={scrollRef}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.75, delay: 0.2 }}
             className="flex gap-6 overflow-x-auto scroll-smooth px-1 py-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {speakers.map((speaker, index) => {
@@ -206,7 +220,7 @@ export default function SpeakersCarousel() {
               return (
                 <article
                   key={speaker.title}
-                  className="group shrink-0 basis-[86%] overflow-hidden rounded-[14px] bg-white/95  backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_16px_34px_rgba(43,47,145,0.18)] sm:basis-[45%] md:basis-[30%] lg:basis-[calc((100%-72px)/4)]"
+                  className="group shrink-0 basis-[86%] overflow-hidden rounded-[14px] bg-white/95 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_16px_34px_rgba(43,47,145,0.18)] sm:basis-[45%] md:basis-[30%] lg:basis-[calc((100%-72px)/4)]"
                 >
                   {/* Image */}
                   <div className="relative h-[260px] w-full overflow-hidden bg-[#f5f5f5] sm:h-[230px] md:h-[210px] lg:h-[210px]">
@@ -255,7 +269,7 @@ export default function SpeakersCarousel() {
                 </article>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Bottom Buttons */}
           <div className="mt-8 flex items-center justify-center gap-5">

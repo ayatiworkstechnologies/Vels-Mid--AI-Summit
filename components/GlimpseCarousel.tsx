@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function GlimpseCarousel() {
   const slides = [
@@ -51,17 +52,22 @@ export default function GlimpseCarousel() {
   }, [isPaused]);
 
   return (
-    <section className="w-full relative bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
       {/* Full Background Image */}
-            <Image
-              src="/images/highlights-bg.jpg"
-              alt="Conference Highlights Background"
-              fill
-              priority={false}
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-      <div
+      <Image
+        src="/images/highlights-bg.jpg"
+        alt="Conference Highlights Background"
+        fill
+        priority={false}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+
+      <motion.div
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.8 }}
         className="relative mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -70,7 +76,7 @@ export default function GlimpseCarousel() {
         <button
           type="button"
           onClick={handlePrev}
-          className="absolute left-1 top-1/2 z-20 cursor-pointer hidden -translate-y-1/2 text-[#2b2f91] transition hover:scale-110 sm:block lg:left-0"
+          className="absolute left-1 top-1/2 z-20 hidden -translate-y-1/2 cursor-pointer text-[#2b2f91] transition hover:scale-110 sm:block lg:left-0"
           aria-label="Previous slide"
         >
           <span className="text-[34px] font-light leading-none">‹</span>
@@ -116,7 +122,7 @@ export default function GlimpseCarousel() {
         <button
           type="button"
           onClick={handleNext}
-          className="absolute right-1 top-1/2 z-20 cursor-pointer hidden -translate-y-1/2 text-[#2b2f91] transition hover:scale-110 sm:block lg:right-0"
+          className="absolute right-1 top-1/2 z-20 hidden -translate-y-1/2 cursor-pointer text-[#2b2f91] transition hover:scale-110 sm:block lg:right-0"
           aria-label="Next slide"
         >
           <span className="text-[34px] font-light leading-none">›</span>
@@ -142,7 +148,7 @@ export default function GlimpseCarousel() {
             ›
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

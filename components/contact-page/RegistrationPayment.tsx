@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function RegistrationPayment() {
   const paymentRows = [
@@ -26,9 +29,20 @@ export default function RegistrationPayment() {
   ];
 
   return (
-    <div className="rounded-[24px] border border-[#e2e5f5] bg-white/95 p-5 shadow-[0_16px_42px_rgba(43,47,145,0.10)] backdrop-blur-sm sm:p-7">
+    <motion.div
+      initial={{ opacity: 0, y: 45, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      className="rounded-[24px] border border-[#e2e5f5] bg-white/95 p-5 shadow-[0_16px_42px_rgba(43,47,145,0.10)] backdrop-blur-sm sm:p-7"
+    >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -28 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.75, delay: 0.15, ease: "easeOut" }}
+        >
           <h3 className="text-[24px] font-extrabold leading-tight text-black sm:text-[30px]">
             Registration & Payment Information
           </h3>
@@ -37,18 +51,33 @@ export default function RegistrationPayment() {
             Early bird and regular registration fee details for workshop and
             conference participation.
           </p>
-        </div>
+        </motion.div>
 
-        <Link
-          href="https://forms.gle/xBKVaHc9b7UWS33C7"
-          target="_blank"
-          className="inline-flex w-fit rounded-[8px] bg-[#2b2f91] px-5 py-3 text-[13px] font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.20)]"
+        <motion.div
+          initial={{ opacity: 0, x: 28 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.75, delay: 0.25, ease: "easeOut" }}
+          whileHover={{ y: -4, scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
         >
-          Register Online
-        </Link>
+          <Link
+            href="https://forms.gle/xBKVaHc9b7UWS33C7"
+            target="_blank"
+            className="inline-flex w-fit rounded-[8px] bg-[#2b2f91] px-5 py-3 text-[13px] font-extrabold text-white transition-all duration-300 hover:bg-[#1f2376] hover:shadow-[0_10px_24px_rgba(43,47,145,0.20)]"
+          >
+            Register Online
+          </Link>
+        </motion.div>
       </div>
 
-      <div className="mt-7 overflow-x-auto rounded-[16px] border border-[#dde1f4]">
+      <motion.div
+        initial={{ opacity: 0, y: 38 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.9, delay: 0.28, ease: "easeOut" }}
+        className="mt-7 overflow-x-auto rounded-[16px] border border-[#dde1f4]"
+      >
         <table className="w-full min-w-[760px] border-collapse text-left">
           <thead>
             <tr className="bg-[#2b2f91] text-white">
@@ -125,7 +154,7 @@ export default function RegistrationPayment() {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

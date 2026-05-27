@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function RunningText() {
   const highlights = [
@@ -47,26 +50,67 @@ export default function RunningText() {
         sizes="100vw"
         className="object-cover object-center"
       />
+
+      <div className="absolute inset-0 bg-white/20" />
+
       <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
         {/* Heading */}
         <div className="max-w-[920px]">
-          <span className="text-[12px] font-bold uppercase tracking-[0.32em] text-[#2b2f91]">
+          <motion.span
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, delay: 0.05 }}
+            className="block text-[12px] font-bold uppercase tracking-[0.32em] text-[#2b2f91]"
+          >
             Conference Highlights
-          </span>
+          </motion.span>
 
-          <h2 className="mt-3 text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[40px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className="mt-3 text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[40px]"
+          >
             What to Expect at MED-AI Summit 2026
-          </h2>
+          </motion.h2>
 
-          <div className="mt-4 h-[1.5px] w-full max-w-[950px] bg-[#4d56c9]" />
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.85, delay: 0.25 }}
+            style={{ transformOrigin: "left" }}
+            className="mt-4 h-[1.5px] w-full max-w-[950px] bg-[#4d56c9]"
+          />
         </div>
 
         {/* Cards */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item, index) => (
-            <article
-              key={index}
-              className="group relative min-h-[150px] overflow-hidden rounded-[16px] border border-[#2b2f91] bg-white/95 p-5 shadow-[0_8px_24px_rgba(43,47,145,0.10)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:bg-[#2b2f91] hover:shadow-[0_18px_40px_rgba(43,47,145,0.22)]"
+            <motion.article
+              key={item.title}
+              initial={{
+                opacity: 0,
+                y: 45,
+                scale: 0.96,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              viewport={{ once: true, amount: 0.22 }}
+              transition={{
+                duration: 0.55,
+                delay: index * 0.09,
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+              }}
+              className="group relative min-h-[150px] overflow-hidden rounded-[16px] border border-[#2b2f91] bg-white/95 p-5 shadow-[0_8px_24px_rgba(43,47,145,0.10)] backdrop-blur-sm transition-colors duration-500 hover:bg-[#2b2f91] hover:shadow-[0_18px_40px_rgba(43,47,145,0.22)]"
             >
               {/* Hover Flow Indicator */}
               <div className="absolute left-0 top-0 h-full w-0 bg-[#2b2f91] transition-all duration-500 ease-out group-hover:w-full" />
@@ -75,7 +119,11 @@ export default function RunningText() {
               <div className="relative z-10 flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between">
                   {/* Icon */}
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f1f2ff] transition-all duration-500 group-hover:bg-white">
+                  <motion.div
+                    whileHover={{ rotate: 8, scale: 1.08 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f1f2ff] transition-all duration-500 group-hover:bg-white"
+                  >
                     <div className="relative h-6 w-6">
                       <Image
                         src={item.icon}
@@ -85,17 +133,36 @@ export default function RunningText() {
                         className="object-contain transition-all duration-500"
                       />
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Dot */}
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[#2b2f91]/40 transition-all duration-500 group-hover:bg-white/80" />
+                  <motion.span
+                    animate={{
+                      scale: [1, 1.35, 1],
+                      opacity: [0.45, 1, 0.45],
+                    }}
+                    transition={{
+                      duration: 1.8 + index * 0.15,
+                      repeat: Infinity,
+                    }}
+                    className="mt-2 h-2 w-2 rounded-full bg-[#2b2f91]/40 transition-all duration-500 group-hover:bg-white/80"
+                  />
                 </div>
 
-                <h3 className="mt-8 text-[16px] font-extrabold leading-[1.35] text-[#2b2f91] transition-colors duration-500 group-hover:text-white sm:text-[17px]">
+                <motion.h3
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.12 + index * 0.08,
+                  }}
+                  className="mt-8 text-[16px] font-extrabold leading-[1.35] text-[#2b2f91] transition-colors duration-500 group-hover:text-white sm:text-[17px]"
+                >
                   {item.title}
-                </h3>
+                </motion.h3>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -32,16 +33,21 @@ export default function EventsPage() {
   return (
     <main className="relative min-h-screen bg-white">
       {/* Events Banner */}
-      <section className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]">
-        <Image
-          src="/images/about-banner.jpg"
-          alt="VELS Events Banner"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />       
-      </section>
+      <motion.section
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.15, ease: "easeOut" }}
+              className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
+            >
+              <Image
+                src="/images/banner-event.jpg"
+                alt="VELS EVENT Banner"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </motion.section>
 
       {/* Pre Conference Workshops */}
       <PreConferenceWorkshops />
