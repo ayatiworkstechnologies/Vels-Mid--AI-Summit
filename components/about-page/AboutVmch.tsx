@@ -92,35 +92,35 @@ export default function AboutVmch() {
 
           {/* Right Visual Panel */}
           <div className="group relative overflow-hidden rounded-[24px] bg-[#2b2f91] shadow-[0_18px_45px_rgba(43,47,145,0.22)]">
-  {/* Background Image */}
-  <Image
-    src="/images/about-banner.jpg"
-    alt="VELS Medical College and Hospital"
-    fill
-    priority={false}
-    sizes="(max-width: 1024px) 100vw, 520px"
-    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-  />
+            {/* Background Image */}
+            <Image
+              src="/images/healthcare.jpg"
+              alt="VELS Medical College and Hospital"
+              fill
+              priority={false}
+              sizes="(max-width: 1024px) 100vw, 520px"
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
 
-  {/* Premium Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-br from-[#111342]/40 via-[#2b2f91]/32 to-[#2b2f91]/25" />
+            {/* Premium Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#111342]/40 via-[#2b2f91]/32 to-[#2b2f91]/25" />
 
-  {/* Soft Glow */}
-  <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/20 blur-[80px]" />
-  <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#4d56c9]/40 blur-[70px]" />
+            {/* Soft Glow */}
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/20 blur-[80px]" />
+            <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#4d56c9]/40 blur-[70px]" />
 
-  {/* Content */}
-  <div className="relative z-10 flex min-h-[420px] flex-col justify-between p-6 text-white sm:p-7 md:min-h-[460px]">
-    <div>
-      <span className="inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.28em] text-white backdrop-blur-md">
-        Healthcare Excellence
-      </span>
-    </div>
-  </div>
+            {/* Content */}
+            <div className="relative z-10 flex min-h-[420px] flex-col justify-between p-6 text-white sm:p-7 md:min-h-[460px]">
+              <div>
+                <span className="inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.28em] text-white backdrop-blur-md">
+                  Healthcare Excellence
+                </span>
+              </div>
+            </div>
 
-  {/* Bottom Accent Line */}
-  <div className="absolute bottom-0 left-0 h-[5px] w-full bg-gradient-to-r from-white/80 via-white/30 to-transparent" />
-</div>
+            {/* Bottom Accent Line */}
+            {/* <div className="absolute bottom-0 left-0 h-[5px] w-full bg-gradient-to-r from-white/80 via-white/30 to-transparent" /> */}
+          </div>
         </div>
 
         {/* Feature Cards */}

@@ -63,7 +63,7 @@ export default function AboutConference() {
         <div className="w-full">
           <div className="relative mx-auto h-[300px] w-full max-w-[390px] overflow-hidden rounded-[12px] bg-white shadow-[0_12px_35px_rgba(43,47,145,0.12)] sm:h-[360px] md:h-[395px]">
             <Image
-              src="/images/conference.jpg"
+              src="/images/about-conference.jpg"
               alt="About the Conference"
               fill
               sizes="(max-width: 768px) 100vw, 390px"

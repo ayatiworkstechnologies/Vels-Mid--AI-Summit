@@ -45,7 +45,7 @@ export default function AboutVistas() {
             <div className="relative hidden min-h-[360px] overflow-hidden bg-[#2b2f91] lg:block">
               {/* VISTAS Image */}
               <Image
-                src="/images/vistas-about.jpg"
+                src="/images/tech.png"
                 alt="VELS Institute"
                 fill
                 priority={false}

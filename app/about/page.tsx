@@ -32,10 +32,10 @@ export default function AboutPage() {
   return (
     <main className="relative">
       {/* About Banner */}
-      <section className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]">
+      <section className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[580px]">
         <Image
-          src="/images/about-banner.jpg"
-          alt="VELS Banner"
+          src="/images/banner-about.jpg"
+          alt="VELS About Banner"
           fill
           priority
           sizes="100vw"

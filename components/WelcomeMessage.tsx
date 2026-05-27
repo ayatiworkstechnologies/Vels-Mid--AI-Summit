@@ -20,7 +20,7 @@ export default function WelcomeMessage() {
         <div className="w-full">
           <div className="relative h-[260px] w-full rounded-[12px] overflow-hidden sm:h-[340px] md:h-[455px]">
             <Image
-              src="/images/welcome.jpg"
+              src="/images/welcome-section.jpg"
               alt="MED-AI Summit 2026"
               fill
               priority
