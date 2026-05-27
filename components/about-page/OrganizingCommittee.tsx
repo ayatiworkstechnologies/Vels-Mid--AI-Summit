@@ -250,9 +250,9 @@ export default function OrganizingCommittee() {
           >
             {activeCommittee.members.map((member) => (
               <div key={member.name} className="min-w-full px-1">
-                <article className="overflow-hidden rounded-[8px] bg-white shadow-[0_14px_35px_rgba(43,47,145,0.14)]">
+                <article className="overflow-hidden rounded-[8px] bg-white ">
                   {/* Image */}
-                  <div className="relative h-[205px] w-full overflow-hidden bg-[#f4f4f4]">
+                  {/* <div className="relative h-[205px] w-full overflow-hidden bg-[#f4f4f4]">
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -260,7 +260,7 @@ export default function OrganizingCommittee() {
                       sizes="320px"
                       className="object-contain object-top"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Content */}
                   <div className="min-h-[120px] px-5 py-5">
@@ -313,7 +313,7 @@ export default function OrganizingCommittee() {
               className="group mx-auto w-full max-w-[230px] overflow-hidden rounded-[8px] bg-white shadow-[0_10px_28px_rgba(43,47,145,0.10)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_18px_40px_rgba(43,47,145,0.18)]"
             >
               {/* Image */}
-              <div className="relative h-[165px] w-full overflow-hidden bg-[#f4f4f4]">
+              {/* <div className="relative h-[165px] w-full overflow-hidden bg-[#f4f4f4]">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -321,7 +321,7 @@ export default function OrganizingCommittee() {
                   sizes="230px"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
-              </div>
+              </div> */}
 
               {/* Content */}
               <div className="min-h-[115px] px-4 py-4">
