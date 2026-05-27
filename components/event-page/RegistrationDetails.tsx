@@ -76,7 +76,7 @@ export default function RegistrationDetails() {
         </div>
 
         {/* Registration Table */}
-        <div className="mx-auto mt-8 max-w-[720px] overflow-x-auto">
+        <div className="mx-auto mt-8 max-w-[720px] rounded-[14px] overflow-x-auto">
           <table className="w-full min-w-[680px] border-collapse text-left">
             <thead>
               <tr className="bg-[#2b2f91] text-white">
@@ -146,7 +146,7 @@ export default function RegistrationDetails() {
         </div>
 
         {/* Register CTA */}
-        <div className="mx-auto mt-12 max-w-[980px] bg-[#2b2f91] px-5 py-5 sm:px-8 md:px-10">
+        <div className="mx-auto mt-12 rounded-[14px] max-w-[980px] bg-[#2b2f91] px-5 py-5 sm:px-8 md:px-10">
           <div className="flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
             <h3 className="text-[20px] font-extrabold leading-tight text-white sm:text-[24px]">
               Click here to Register for MED-AI Summit 2026
@@ -154,7 +154,7 @@ export default function RegistrationDetails() {
 
             <Link
               href="https://forms.gle/xBKVaHc9b7UWS33C7"
-              className="inline-flex min-w-[190px] items-center justify-center bg-white px-8 py-3 text-[18px] font-extrabold text-[#2b2f91] transition-all duration-300 hover:bg-[#f2f2ff] hover:shadow-[0_10px_24px_rgba(0,0,0,0.18)]"
+              className="inline-flex min-w-[190px] rounded-[14px] items-center justify-center bg-white px-8 py-3 text-[18px] font-extrabold text-[#2b2f91] transition-all duration-300 hover:bg-[#f2f2ff] hover:shadow-[0_10px_24px_rgba(0,0,0,0.18)]"
             >
               Register
             </Link>
@@ -171,7 +171,7 @@ export default function RegistrationDetails() {
         </div>
 
         {/* Important Dates Table */}
-        <div className="mx-auto mt-7 max-w-[460px] overflow-hidden">
+        <div className="mx-auto rounded-[14px] mt-7 max-w-[460px] overflow-hidden">
           <table className="w-full border-collapse text-left">
             <thead>
               <tr className="bg-[#2b2f91] text-white">

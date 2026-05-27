@@ -56,7 +56,7 @@ export default function PreConferenceWorkshops() {
         </div>
 
         {/* Table */}
-        <div className="mx-auto mt-8 max-w-[540px] overflow-x-auto rounded-[8px] bg-white/95 shadow-[0_12px_35px_rgba(43,47,145,0.10)] backdrop-blur-sm">
+        <div className="mx-auto mt-8 max-w-[540px] overflow-x-auto rounded-[14px] bg-white/95 shadow-[0_12px_35px_rgba(43,47,145,0.10)] backdrop-blur-sm">
           <table className="w-full border-collapse text-left">
             <thead>
               <tr className="bg-[#2b2f91] text-white">
