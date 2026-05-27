@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 
 import AboutVistas from "@/components/about-page/AboutVistas-Tech";
@@ -11,6 +11,16 @@ import AboutConference from "@/components/AboutConference";
 
 export default function AboutPage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [pageReady, setPageReady] = useState(false);
+
+  // ✅ Fix page opening from old scroll position
+  useLayoutEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      setPageReady(true);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,13 +40,17 @@ export default function AboutPage() {
     });
   };
 
+  if (!pageReady) {
+    return null;
+  }
+
   return (
     <main className="relative">
-     {/* Banner Section */}
+      {/* Banner Section */}
       <motion.section
-        initial={{ opacity: 0, x: -60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
         className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
       >
         <Image

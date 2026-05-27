@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 import RegistrationPayment from "@/components/contact-page/RegistrationPayment";
 import BankDetails from "@/components/contact-page/BankDetails";
@@ -33,6 +33,14 @@ function BackgroundSection({ children }: { children: ReactNode }) {
 
 export default function ContactPage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [pageReady, setPageReady] = useState(false);
+
+  // ✅ Page always starts from top before rendering
+  useLayoutEffect(() => {
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+    setPageReady(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,13 +60,17 @@ export default function ContactPage() {
     });
   };
 
+  if (!pageReady) {
+    return null;
+  }
+
   return (
     <main className="relative min-h-screen bg-white">
       {/* Contact Banner */}
       <motion.section
-        initial={{ opacity: 0, scale: 1.03 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.15, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
         className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
       >
         <Image
@@ -74,27 +86,27 @@ export default function ContactPage() {
       {/* Page Intro */}
       <BackgroundSection>
         <motion.div
-          initial={{ opacity: 0, y: 38 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
           className="mx-auto max-w-[850px] text-center"
         >
           <motion.span
-            initial={{ opacity: 0, scale: 0.92 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.65, delay: 0.12, ease: "easeOut" }}
+            transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
             className="inline-flex rounded-full border border-[#2b2f91]/15 bg-[#eef0ff] px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.26em] text-[#2b2f91]"
           >
             Contact & Registration
           </motion.span>
 
           <motion.h2
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.22, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 0.14, ease: "easeOut" }}
             className="mt-4 text-[30px] font-extrabold leading-tight text-black sm:text-[36px] md:text-[40px]"
           >
             Registration, Payment & Contact Information
@@ -104,16 +116,16 @@ export default function ContactPage() {
             initial={{ scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.24, ease: "easeOut" }}
             style={{ transformOrigin: "center" }}
             className="mx-auto mt-4 h-[1.5px] w-full max-w-[620px] bg-[#4d56c9]"
           />
 
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.85, delay: 0.48, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 0.34, ease: "easeOut" }}
             className="mx-auto mt-5 max-w-[760px] text-[14px] leading-[1.7] text-[#5f5f5f] sm:text-[15px]"
           >
             Find registration fees, bank details, sponsorship opportunities,
@@ -150,10 +162,11 @@ export default function ContactPage() {
         type="button"
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className={`fixed bottom-6 right-5 z-[999] flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-[#2b2f91] text-white shadow-[0_12px_30px_rgba(43,47,145,0.35)] transition-all duration-500 hover:-translate-y-1 hover:bg-[#1f2376] hover:shadow-[0_16px_36px_rgba(43,47,145,0.45)] sm:bottom-8 sm:right-7 ${showScrollTop
-          ? "pointer-events-auto translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-5 opacity-0"
-          }`}
+        className={`fixed bottom-6 right-5 z-[999] flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-[#2b2f91] text-white shadow-[0_12px_30px_rgba(43,47,145,0.35)] transition-all duration-500 hover:-translate-y-1 hover:bg-[#1f2376] hover:shadow-[0_16px_36px_rgba(43,47,145,0.45)] sm:bottom-8 sm:right-7 ${
+          showScrollTop
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-5 opacity-0"
+        }`}
       >
         <span className="text-[26px] font-light leading-none">↑</span>
       </button>

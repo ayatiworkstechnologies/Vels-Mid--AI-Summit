@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 
 import RegistrationDetails from "@/components/event-page/RegistrationDetails";
@@ -11,6 +11,14 @@ import CallForAbstracts from "@/components/event-page/CallForAbstracts";
 
 export default function EventsPage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [pageReady, setPageReady] = useState(false);
+
+  // ✅ Page always starts from top before render
+  useLayoutEffect(() => {
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+    setPageReady(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,24 +38,28 @@ export default function EventsPage() {
     });
   };
 
+  if (!pageReady) {
+    return null;
+  }
+
   return (
     <main className="relative min-h-screen bg-white">
       {/* Events Banner */}
       <motion.section
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.15, ease: "easeOut" }}
-              className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
-            >
-              <Image
-                src="/images/banner-event.jpg"
-                alt="VELS EVENT Banner"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover object-center"
-              />
-            </motion.section>
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
+        className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
+      >
+        <Image
+          src="/images/banner-event.jpg"
+          alt="VELS EVENT Banner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </motion.section>
 
       {/* Pre Conference Workshops */}
       <PreConferenceWorkshops />
