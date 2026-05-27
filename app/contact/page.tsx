@@ -74,7 +74,7 @@ export default function ContactPage() {
         className="relative h-[420px] w-full overflow-hidden sm:h-[520px] md:h-[540px]"
       >
         <Image
-          src="/images/banner-contact-b.jpg"
+          src="/images/contacts-banner.jpg"
           alt="VELS Contact Banner"
           fill
           priority
