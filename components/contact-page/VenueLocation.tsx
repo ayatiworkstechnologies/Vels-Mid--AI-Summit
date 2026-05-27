@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function VenueLocation() {
   const locationLink =
-    "https://www.google.com/maps/search/?api=1&query=VELS%20Medical%20College%20%26%20Hospital%2012%2F123%20Velan%20Nagar%20Periyapalayam%20Road%20Manjankaranai%20Tiruvallur%20601102%20Tamil%20Nadu%20India";
+    "https://maps.app.goo.gl/Bmh1TLEwCFC3Sdpq6";
 
   const registrationLink = "https://forms.gle/xBKVaHc9b7UWS33C7";
 

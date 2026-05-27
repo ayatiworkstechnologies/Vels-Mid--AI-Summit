@@ -153,7 +153,7 @@ export default function RegistrationDetails() {
             </h3>
 
             <Link
-              href="#"
+              href="https://forms.gle/xBKVaHc9b7UWS33C7"
               className="inline-flex min-w-[190px] items-center justify-center bg-white px-8 py-3 text-[18px] font-extrabold text-[#2b2f91] transition-all duration-300 hover:bg-[#f2f2ff] hover:shadow-[0_10px_24px_rgba(0,0,0,0.18)]"
             >
               Register

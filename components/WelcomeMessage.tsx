@@ -76,7 +76,7 @@ export default function WelcomeMessage() {
 
           <div className="mt-8">
             <Link
-              href="/register"
+              href="https://forms.gle/xBKVaHc9b7UWS33C7"
               className="inline-flex min-w-[185px] items-center rounded-[12px] justify-center bg-[#2b2f91] px-8 py-3 text-[18px] font-bold text-white transition-all duration-300 hover:bg-[#1f2376]"
             >
               Register

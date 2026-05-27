@@ -28,7 +28,7 @@ export default function EarlyBirdRegistration() {
             {/* Buttons */}
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <Link
-                href="#"
+                href="https://forms.gle/xBKVaHc9b7UWS33C7"
                 className="inline-flex w-fit items-center justify-center rounded-[12px] bg-white px-5 py-2 text-[12px] font-extrabold text-[#2b2f91] transition-all duration-300 hover:bg-[#f2f2ff] hover:shadow-[0_8px_18px_rgba(0,0,0,0.18)] sm:text-[13px]"
               >
                 Register Now
