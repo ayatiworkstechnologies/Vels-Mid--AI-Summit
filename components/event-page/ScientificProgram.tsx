@@ -91,7 +91,6 @@ export default function ScientificProgram() {
 
   const sessions = activeDay === "day1" ? day1Sessions : day2Sessions;
 
-  // Correct June 2026 calendar: 26 = Friday, 27 = Saturday
   const calendarDates = [
     ["1", "2", "3", "4", "5", "6", "7"],
     ["8", "9", "10", "11", "12", "13", "14"],
@@ -101,16 +100,19 @@ export default function ScientificProgram() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 lg:py-14">
-      {/* Background Image */}
-      <Image
-        src="/images/highlights-bg.jpg"
-        alt="Scientific Program Background"
-        fill
-        priority={false}
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+    <section className="relative w-full overflow-visible bg-white py-8 sm:py-10 md:py-12 lg:py-14">
+      {/* Background Image - separated so sticky works */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/images/highlights-bg.jpg"
+          alt="Scientific Program Background"
+          fill
+          priority={false}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+  
+      </div>
 
       <div className="relative z-10 mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
         {/* Heading */}
@@ -169,7 +171,7 @@ export default function ScientificProgram() {
             </div>
           </div>
 
-          {/* Mobile/Tablet Schedule */}
+          {/* Mobile / Tablet Schedule */}
           <div className="mt-5 rounded-[22px] bg-white/95 p-4 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm sm:p-5">
             <div className="flex items-center justify-between gap-4 border-b border-[#4d56c9] pb-4">
               <h3 className="text-[22px] font-extrabold leading-tight text-black sm:text-[26px]">
@@ -187,7 +189,7 @@ export default function ScientificProgram() {
               {sessions.map((item, index) => (
                 <article
                   key={`${item.time}-${index}`}
-                  className="rounded-[16px] border border-[#e3e5f5] bg-white p-4 shadow-[0_8px_22px_rgba(43,47,145,0.08)] transition-all duration-300 hover:border-[#2b2f91] hover:shadow-[0_12px_28px_rgba(43,47,145,0.14)]"
+                  className="rounded-[16px] border border-[#e3e5f5] bg-white p-4 shadow-[0_8px_22px_rgba(43,47,145,0.08)]"
                 >
                   <div className="flex items-start gap-3">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2b2f91] text-[12px] font-extrabold text-white">
@@ -211,9 +213,9 @@ export default function ScientificProgram() {
         </div>
 
         {/* Desktop Design */}
-        <div className="mt-8 hidden grid-cols-[0.85fr_1.65fr] gap-8 lg:grid">
-          {/* Calendar Card */}
-          <div className="self-start rounded-[22px] bg-white/95 p-6 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm">
+        <div className="mt-8 hidden grid-cols-[0.85fr_1.65fr] items-start gap-8 overflow-visible lg:grid">
+          {/* Sticky Calendar Card */}
+          <div className="sticky top-[110px] self-start rounded-[22px] bg-white/95 p-6 shadow-[0_14px_40px_rgba(43,47,145,0.12)] backdrop-blur-sm">
             {/* Calendar Header */}
             <div className="flex items-center justify-between">
               <button
@@ -228,6 +230,7 @@ export default function ScientificProgram() {
                 <span className="rounded-[8px] bg-white px-4 py-3 text-[22px] font-extrabold text-black shadow-[0_6px_18px_rgba(0,0,0,0.04)]">
                   June
                 </span>
+
                 <span className="rounded-[8px] bg-white px-4 py-3 text-[22px] font-extrabold text-black shadow-[0_6px_18px_rgba(0,0,0,0.04)]">
                   2026
                 </span>
@@ -308,14 +311,15 @@ export default function ScientificProgram() {
               </span>
             </div>
 
-            <div className="mt-5 overflow-hidden rounded-[12px]">
-              <table className="w-full border-collapse">
+            <div className="mt-6 overflow-hidden rounded-[16px] border border-[#d9ddf4]">
+              <table className="w-full border-collapse text-left">
                 <thead>
                   <tr className="bg-[#2b2f91] text-white">
-                    <th className="w-[250px] px-5 py-4 text-left text-[15px] font-extrabold">
+                    <th className="w-[260px] px-6 py-5 text-[16px] font-extrabold">
                       Time
                     </th>
-                    <th className="px-5 py-4 text-left text-[15px] font-extrabold">
+
+                    <th className="px-6 py-5 text-[16px] font-extrabold">
                       Session
                     </th>
                   </tr>
@@ -325,14 +329,15 @@ export default function ScientificProgram() {
                   {sessions.map((item, index) => (
                     <tr
                       key={`${item.time}-${index}`}
-                      className={`border-b border-[#dedede] ${
-                        index % 2 === 1 ? "bg-[#f2f2f5]" : "bg-white"
+                      className={`border-b border-[#d9ddf4] last:border-b-0 ${
+                        index % 2 === 0 ? "bg-white" : "bg-[#f2f2f5]"
                       }`}
                     >
-                      <td className="px-5 py-4 align-top text-[14px] font-extrabold leading-[1.35] text-[#333333]">
+                      <td className="px-6 py-5 align-top text-[14px] font-extrabold leading-[1.35] text-[#333333]">
                         {item.time}
                       </td>
-                      <td className="px-5 py-4 align-top text-[14px] font-bold leading-[1.45] text-[#4f4f4f]">
+
+                      <td className="px-6 py-5 align-top text-[14px] font-bold leading-[1.5] text-[#4f4f4f]">
                         {item.session}
                       </td>
                     </tr>
